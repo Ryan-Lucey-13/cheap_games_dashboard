@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Bike Cities</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+            <h1>Bikes Available in these Cities</h1>
+            <ol>
+            {% for bike in city_results|dictsort:"location.country" %}
+                <li>{{ bike.location.city }}, {{bike.location.country }}</li>
+            {% endfor %}
+            </ol>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+
+
+
