@@ -11,7 +11,7 @@ def index(request):
         <a href="/cities">Cities</a> <br />
         <a href="/companies">Companies</a> <br />
     ''')
-https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=30
+
 
 def city_bikes(request):
     response = requests.get('http://api.citybik.es/v2/networks')
