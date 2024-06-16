@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <title>Game Titles</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+            <div class='nav justify-content center'>
+                <a class="nav-link" href="/">Homepage</a>
+                <a class="nav-link" href="/table">Games</a>
+                <a class="nav-link" href="/pricing">Prices</a>
+                <a class="nav-link" href="/ratings">Ratings</a>
+            </div>
+            <h1>Games on Sale for Cheap</h1>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Game Title</th>
+                        <th class="text-center">Cover Art</th>
+                        <th class="text-center">Release Date</th>
+                        <th class="text-center">Price</th>
+                        <th class="text-center">Rating</th>
+                        <th class="text-center">Deal Rating</th>
+                    </tr>
+                </thead>
+                {% for game in games_results %}
+                <tbody>
+                    <tr>
+                        <td class="align-middle">{{ game.title }}</td>
+                        <td class="text-center"><img src= "{{ game.thumb }}"></td>
+                        <td class="text-center align-middle">{{ game.releaseDate }}</td>
+                        <td class="text-center align-middle">{{ game.salePrice }} / {{ game.normalPrice }}</td>
+                        <td class="text-center align-middle">{{ game.steamRatingPercent }}</td>
+                        <td class="text-center align-middle">{{ game.dealRating }}</td>
+                    </tr>
+                </tbody>
+                {% endfor %}
+            </table>
+        </div>
+      </div>
+    </div>
+</body>
+</html>
+
+
+
+

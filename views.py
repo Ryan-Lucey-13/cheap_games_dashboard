@@ -1,6 +1,8 @@
 import requests
+import pygal
 from django.http import HttpResponse
 from django.shortcuts import render
+
 
 def index(request):
     # This is similar to ones we have done before. Instead of keeping
@@ -8,41 +10,57 @@ def index(request):
     # the HTML embedded here.
     return HttpResponse('''
         <h1>Welcome to my home page!</h1>
-        <a href="/cities">Cities</a> <br />
-        <a href="/companies">Companies</a> <br />
+        <a href="/table">Games</a> <br />
+        <a href="/pricing">Prices</a> <br />
+        <a href="/ratings">Ratings</a> <br />
     ''')
 
 
-def city_bikes(request):
-    response = requests.get('http://api.citybik.es/v2/networks')
-    bikes_data = response.json()
+def game_info(request):
+    response = requests.get('https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=25')
+    games_data = response.json()
     
-    results_list = bikes_data['networks']
+    results_list = games_data
     
     context = {
-        'city_results': results_list
+        'games_results': results_list
     }
 
-    return render(request,'cities.html', context)
+    return render(request,'table.html', context)
 
 
-def bike_companies(request):
-    # We can also combine Django with APIs
-    response = requests.get('http://api.citybik.es/v2/networks')
-    bikes_data = response.json()
+def game_discount(request):
+    response = requests.get('https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=25')
+    games_data = response.json()
     
-    results_list = bikes_data['networks']
-    
-    company_list = []
-    for result in results_list:
-        if 'company' in result and result['company']:
-            company = result['company'][0]
-            if company not in company_list:
-                company_list.append(company)
+    results_list = games_data
 
+    bar_chart = pygal.HorizontalBar()
+    bar_chart.title = "Savings Breakdown Per Game"
+    bar_chart.add('IE', 19.5)
+    bar_chart.add('Firefox', 36.6)
+    bar_chart.add('Chrome', 36.3)
+    bar_chart.add('Safari', 4.5)
+    bar_chart.add('Opera', 2.3)
+
+    chart_svg = bar_chart.render_data_uri()
+    
     context = {
-        'company_results': company_list
+        'rendered_chart_svg': chart_svg
     }
+
+    return render(request,'pricing.html', context)
+
+def game_ratings(request):
+    response = requests.get('https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=25')
+    games_data = response.json()
     
-    return render(request,'companies.html', context)
+    results_list = games_data
+    
+    context = {
+        'ratings_results': results_list
+    }
+
+    return render(request,'ratings.html', context)
+    
 
