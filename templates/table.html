@@ -25,7 +25,7 @@
                         <th>Game Title</th>
                         <th class="text-center">Cover Art</th>
                         <th class="text-center">Release Date</th>
-                        <th class="text-center">Price</th>
+                        <th class="text-center">Price (Sale/Original)</th>
                         <th class="text-center">Rating</th>
                         <th class="text-center">Deal Rating</th>
                     </tr>
@@ -36,7 +36,7 @@
                         <td class="align-middle">{{ game.title }}</td>
                         <td class="text-center"><img src= "{{ game.thumb }}"></td>
                         <td class="text-center align-middle">{{ game.releaseDate }}</td>
-                        <td class="text-center align-middle">{{ game.salePrice }} / {{ game.normalPrice }}</td>
+                        <td class="text-center align-middle">${{ game.salePrice }} / ${{ game.normalPrice }}</td>
                         <td class="text-center align-middle">{{ game.steamRatingPercent }}</td>
                         <td class="text-center align-middle">{{ game.dealRating }}</td>
                     </tr>

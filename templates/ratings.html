@@ -17,12 +17,8 @@
                 <a class="nav-link" href="/pricing">Prices</a>
                 <a class="nav-link" href="/ratings">Ratings</a>
             </div>
-            <h1>Game Ratings</h1>
-            <ol>
-            {% for game in ratings_results %}
-                <li>{{ game.metacriticScore }}, {{ game.steamRatingPercent }}, {{ game.dealRating }}</li>
-            {% endfor %}
-            </ol>
+            <h1>How are they Rated?</h1>
+            <embed type="image/svg+xml" src="{{ rendered_chart_svg|safe }}"/>
         </div>
       </div>
 
