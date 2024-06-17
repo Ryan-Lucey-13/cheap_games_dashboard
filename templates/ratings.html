@@ -18,6 +18,12 @@
                 <a class="nav-link" href="/ratings">Ratings</a>
             </div>
             <h1>How are they Rated?</h1>
+            <form method="GET" action="/search-results/">
+                <div class="input-group mb-2">
+                    <input name="searchterm" type="text" class="form-control form-control-lg" placeholder="Enter Game Title..." />
+                    <button class="btn btn-primary btn-lg input-group-text">Search</button>
+                </div>  
+            </form>
             <embed type="image/svg+xml" src="{{ rendered_chart_svg|safe }}"/>
         </div>
       </div>

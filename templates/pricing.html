@@ -20,6 +20,16 @@
                 <a class="nav-link" href="/ratings">Ratings</a>
             </div>
             <h1>Discount Calculator</h1>
+            <form method="GET" action="/search-results/">
+                <div class="input-group mb-2">
+                    <input name="searchterm" type="text" class="form-control form-control-lg" placeholder="Enter Game Title you are looking for..." />
+                    <button class="btn btn-primary btn-lg input-group-text">Search</button>
+                </div>  
+                <div class="input-group mb-2">
+                    <input name="searchterm" type="text" class="form-control form-control-lg" placeholder="Enter Max Price Range..." />
+                    <button class="btn btn-primary btn-lg input-group-text">Search</button>
+                </div> 
+            </form>
             <embed type="image/svg+xml" src="{{ rendered_chart_svg|safe }}"/>
         </div>
       </div>

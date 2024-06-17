@@ -15,6 +15,30 @@ def index(request):
         <a href="/ratings">Ratings</a> <br />
     ''')
 
+    '''
+    def game_info(request):
+        search_type = request.GET['stype']
+        search_query = request.GET['searchterm']
+
+        context = {
+            'results_count': 0,
+            'search_message': None,
+            'search_term': search_query,
+            'search_type': search_type,
+        }
+
+        if search_type == 'pricesearch'
+            context['search_message'] = 'Max Price Range'
+            context['results_count'] = 0
+
+            url = 'https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice='
+            url += search_query
+            response = requests.get(url)
+            games_data = response.json()  
+            results_list = games_data
+        else:
+            
+    '''
 
 def game_info(request):
     response = requests.get('https://www.cheapshark.com/api/1.0/deals?storeID=1&upperPrice=25')
@@ -63,8 +87,8 @@ def game_ratings(request):
     
     
     for game in results_list:
-        if game['title'] == "Trans-Siberian Railway Simulator":
-            label = "Trans-Siberian Railway Simulator"
+        if game['title'] == "Sid Meiers Civilization VI":
+            label = "Sid Meiers Civilization VI"
             meta_rating = 20 #game['metacriticScore']
             steam_rating = 10 #game['steamRatingPercent']
             deal_rating = 15 #game['dealRating'] * 10
